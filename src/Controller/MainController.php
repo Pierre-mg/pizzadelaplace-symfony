@@ -36,20 +36,11 @@ class MainController extends AbstractController
     }
 
     /**
-    * @Route("/menu", name="menu")
+    * @Route("/legal-mentions", name="legal-mentions")
     */
-    public function menu(RedPizzaRepository $redPizza, WhitePizzaRepository $whitePizza, SpecialRedRepository $specialRed, SpecialWhiteRepository $specialWhite,
-    DessertPizzaRepository $dessertPizza, DrinkRepository $drink, WineRepository $wine, AllergenProductRepository $allergenProduct): Response
+    public function legalMention(): Response
     {
-        return $this->render('main/index#menu.html.twig', [
-            'redPizza' => $redPizza->findAll(),
-            'whitePizza' => $whitePizza->findAll(),
-            'specialRed' => $specialRed->findAll(),
-            'specialWhite' => $specialWhite->findAll(),
-            'dessertPizza' => $dessertPizza->findAll(),
-            'drinks' => $drink->findAll(),
-            'wines' => $wine->findAll(),
-            'allergenProduct' => $allergenProduct->findAll()]);
+        return $this->render('main/legal_mentions.html.twig');
     }
 
 

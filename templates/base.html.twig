@@ -14,26 +14,24 @@
         <meta name="description" content="Pizza de la place, restaurant pizzeria situé à Morières Les Avignon. Ouvert tous les soirs de 19h à 22h. Livraison sur Morières Les Avignon, Montfavet, Vedène, Saint Saturnin Les Avignon, Jonquerette et Châteauneuf de Gadagne.">
     </head>
     <body>
-        
-        {% include "_header.html.twig" %}
+
+        {% block header %}
+            {% include "_header.html.twig" %}
+        {% endblock %}
 
         {% block body %}{% endblock %}
         
+        {% block footer %}
+            {% include "_footer.html.twig" %}
+        {% endblock %}
 
-        {% include "_footer.html.twig" %}
-
-        {% block javascripts %}{% endblock %}
-        
+        {% block javascripts %}
         <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-
-        <script src="{{ asset('js/animations.js') }}"></script>
-
         <script src="{{ asset('aos-master/dist/aos.js') }}"></script>
-        <script>
-        AOS.init();
-        </script>
+        <script>AOS.init();</script>
+        {% endblock %}
 
     </body>
 </html>
