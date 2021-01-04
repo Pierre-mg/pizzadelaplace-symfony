@@ -80,21 +80,21 @@
             </div>
         {% endfor %}
     </div>
-{#
+
     <div data-aos="flip-left" data-aos-duration="1500" class="pizza">
     <img src="images/IMG_4.JPG" alt="Pizza">
     </div>
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza other">
         <h2>- Nos pizzas dessert -</h2>
-        <?php foreach ($pizzaDessert as $pizza) : ?>
-        <h3><?= $pizza['name']; ?></h3>
-        <div class="contentPrice">
-            <div class="price">
-                - <?= number_format($pizza['price'], 2, ',', ''); ?> € -
-            </div> 
-        </div>
-        <?php endforeach; ?>
+        {% for pizza in dessertPizza %}
+            <h3>{{ pizza.name }}</h3>
+            <div class="contentPrice">
+                <div class="price">
+                    - {{ pizza.price|number_format(2) }} € -
+                </div> 
+            </div>
+        {% endfor %}
     </div>
 
     <div data-aos="flip-right" data-aos-duration="1500" class="pizza">
@@ -103,14 +103,14 @@
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza other">
         <h2>- Nos boissons -</h2>
-        <?php foreach ($boissons as $boisson) : ?>
-        <h3><?= $boisson['name']; ?></h3>
-        <div class="contentPrice">
-            <div class="price">
-                - <?= number_format($boisson['price'], 2, ',', ''); ?> € -
-            </div> 
+        {% for drink in drinks %}
+            <h3>{{ drink.name }}</h3>
+            <div class="contentPrice">
+                <div class="price">
+                    - {{ drink.price|number_format(2) }} € -
+                </div> 
         </div>
-        <?php endforeach; ?>
+        {% endfor %}
     </div>
 
     <div data-aos="flip-left" data-aos-duration="1500" class="pizza">
@@ -119,14 +119,15 @@
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza other">
         <h2>- Nos vins -</h2>
-        <?php foreach ($vins as $vin) : ?>
-        <h3><?= $vin['name']; ?></h3>
+        {% for wine in wines %}
+             <h3>{{ wine.name }}</h3>
         <div class="contentPrice">
             <div class="price">
-                - <?= number_format($vin['price'], 2, ',', ''); ?> € -
+                - {{ wine.price|number_format(2) }} € -
             </div> 
         </div>
-        <?php endforeach; ?>
+        {% endfor %}
+       
     </div>
 
     <div data-aos="flip-right" data-aos-duration="1500" class="pizza">
@@ -135,26 +136,23 @@
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza">
         <h2>- Produits allergènes -</h2>
-        <?php foreach ($allergenes as $allergene) : ?>
-        <h4><?= $allergene['name']; ?></h3>
-        <?php endforeach; ?>
+        {% for allergen in allergenProduct %}
+            <h4>{{ allergen.name }}</h3>
+        {% endfor %}
     </div>
 
 </section> 
 
 <section id="informations">
 
-
-    <h2 data-aos="fade-up" data-aos-duration="2000" class="right" >Pizzeria ouverte tous les jours de 19h à 22h</h2>
-    <h2 class="left" data-aos="fade-down" data-aos-duration="2000">Restauration sur place ou à emporter</h2>
-    <h2 class="right" data-aos="fade-up" data-aos-duration="2000">Livraison gratuite sur Morières Lès Avignon et communes alentour (Montfavet, Saint Saturnin Lès Avignon, Jonquerette, Vedène et Châteauneuf de Gadagne)</h2>
-    <h2 class="left" data-aos="fade-down" data-aos-duration="2000">Plaques de pizza sur demande</h2>
+    <h2 data-aos="fade-up" data-aos-duration="2000" class="right" >{{ information.0.content }}</h2>
+    <h2 class="left" data-aos="fade-down" data-aos-duration="2000">{{ information.1.content }}</h2>
+    <h2 class="right" data-aos="fade-up" data-aos-duration="2000">{{ information.2.content }}</h2>
+    <h2 class="left" data-aos="fade-down" data-aos-duration="2000">{{ information.3.content }}</h2>
 
 </section>
- #}
+ 
 </main>
-
-
 
 
 {% endblock %}
