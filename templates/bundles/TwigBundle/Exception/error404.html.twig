@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée.{% endblock %}
+
+{% block header %}
+    {% include "_nav.html.twig" %}
+{% endblock %}
+
+{% block body %}
+
+<section id='error'>
+
+
+
+<h2 class='error'>Oups, ceci est une erreur 404 ! La page demandée n'existe pas...</h2>
+<a href="{{ path('home') }}">Retour sur la page d'accueil</a>
+<img class="logo" src="{{ asset('images/logo_fond1.png') }}" alt="Logo">
+
+
+</section>
+
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

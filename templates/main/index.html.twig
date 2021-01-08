@@ -8,7 +8,7 @@
 <section id="menu">
 
     <div  data-aos="fade-up" data-aos-duration="2000" class="pizza left">
-        <h2>- Nos bases rouges -</h2>
+        <h2>- {{ section.0.title }} -</h2>
         {% for pizza in redPizza %}
             <h3>{{ pizza.name }}</h3>
             <div class="contentPrice">
@@ -28,7 +28,7 @@
     </div>
 
     <div data-aos="fade-up"  data-aos-duration="2000" class="pizza right">
-        <h2>- Nos bases blanches -</h2>
+        <h2>- {{ section.1.title }} -</h2>
         {% for pizza in whitePizza %}
             <h3>{{ pizza.name }}</h3>
             <div class="contentPrice">
@@ -47,7 +47,7 @@
     </div>
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza left">
-        <h2>- Nos spéciales rouges -</h2>
+        <h2>- {{ section.2.title }} -</h2>
         {% for pizza in whitePizza %}
             <h3>{{ pizza.name }}</h3>
             <div class="contentPrice">
@@ -67,7 +67,7 @@
 
     
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza right">
-        <h2>- Nos spéciales blanches -</h2>
+        <h2>- {{ section.3.title }} -</h2>
         {% for pizza in whitePizza %}
             <h3>{{ pizza.name }}</h3>
             <div class="contentPrice">
@@ -86,7 +86,7 @@
     </div>
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza other">
-        <h2>- Nos pizzas dessert -</h2>
+        <h2>- {{ section.4.title }} -</h2>
         {% for pizza in dessertPizza %}
             <h3>{{ pizza.name }}</h3>
             <div class="contentPrice">
@@ -102,7 +102,7 @@
     </div>
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza other">
-        <h2>- Nos boissons -</h2>
+        <h2>- {{ section.5.title }} -</h2>
         {% for drink in drinks %}
             <h3>{{ drink.name }}</h3>
             <div class="contentPrice">
@@ -118,7 +118,7 @@
     </div>
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza other">
-        <h2>- Nos vins -</h2>
+        <h2>- {{ section.6.title }} -</h2>
         {% for wine in wines %}
              <h3>{{ wine.name }}</h3>
         <div class="contentPrice">
@@ -135,7 +135,7 @@
     </div>
 
     <div data-aos="fade-up" data-aos-duration="2000" class="pizza">
-        <h2>- Produits allergènes -</h2>
+        <h2>- {{ section.7.title }} -</h2>
         {% for allergen in allergenProduct %}
             <h4>{{ allergen.name }}</h3>
         {% endfor %}

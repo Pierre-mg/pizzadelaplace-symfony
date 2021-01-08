@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TitleRepository;
+use App\Repository\SectionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TitleRepository::class)
+ * @ORM\Entity(repositoryClass=SectionRepository::class)
  */
-class Title
+class Section
 {
     /**
      * @ORM\Id
