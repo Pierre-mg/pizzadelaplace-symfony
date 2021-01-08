@@ -266,6 +266,11 @@ footer {
     text-align: center;
 }
 
+/* Admin */
+
+.btn {
+    margin: 15px 0 15px 0;
+}
 
 /* Tablettes + desktop : */
 @media (min-width: 700px) {
