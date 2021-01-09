@@ -12,9 +12,12 @@
         <title>{% block title %}Pizza de la Place{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
-    <body>
+    <body class="admin_body">
 
         {% include "_nav_admin.html.twig" %}
+
+        {% include "_flash_messages.html.twig" %}
+
 
         {% block body %}{% endblock %}
         
