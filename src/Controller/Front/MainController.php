@@ -24,7 +24,7 @@ class MainController extends AbstractController
     public function index(SectionRepository $section, RedPizzaRepository $redPizza, WhitePizzaRepository $whitePizza, SpecialRedRepository $specialRed, SpecialWhiteRepository $specialWhite,
     DessertPizzaRepository $dessertPizza, DrinkRepository $drink, WineRepository $wine, AllergenProductRepository $allergenProduct, InformationRepository $information): Response
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('front/index.html.twig', [
             'section' => $section->findAll(),
             'redPizza' => $redPizza->findAll(),
             'whitePizza' => $whitePizza->findAll(),
@@ -42,7 +42,7 @@ class MainController extends AbstractController
     */
     public function legalMention(): Response
     {
-        return $this->render('main/legal_mentions.html.twig');
+        return $this->render('front/legal_mentions.html.twig');
     }
 
 

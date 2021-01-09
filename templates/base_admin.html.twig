@@ -8,29 +8,23 @@
         <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('aos-master/dist/aos.css') }}">
+
         <title>{% block title %}Pizza de la Place{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <meta name="description" content="Pizza de la place, restaurant pizzeria situé à Morières Les Avignon. Ouvert tous les soirs de 19h à 22h. Livraison sur Morières Les Avignon, Montfavet, Vedène, Saint Saturnin Les Avignon, Jonquerette et Châteauneuf de Gadagne.">
     </head>
     <body>
 
-        {% block header %}
-            {% include "_header.html.twig" %}
-        {% endblock %}
+        {% include "_nav_admin.html.twig" %}
 
         {% block body %}{% endblock %}
         
-        {% block footer %}
-            {% include "_footer.html.twig" %}
-        {% endblock %}
+
 
         {% block javascripts %}
         <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('aos-master/dist/aos.js') }}"></script>
-        <script>AOS.init();</script>
+
         {% endblock %}
 
     </body>
