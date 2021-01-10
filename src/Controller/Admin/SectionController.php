@@ -32,25 +32,18 @@ class SectionController extends AbstractController
     public function edit(Request $request, Section $section = null, EntityManagerInterface $manager): Response
     {
         if (!$section) {
-            throw $this->createNotFoundException('Section inexistante.');
+            throw $this->createNotFoundException('Section non trouvée.');
         }
 
-        $form = $this->createForm(SectionType::class, $section, 
-            ['attr' => [
-                    'novalidate' => 'novalidate'
-                ]
-            ]);
+        $form = $this->createForm(SectionType::class, $section);
 
         $form->handleRequest($request);
-
         
         if ($form->isSubmitted() && $form->isValid()) {
 
-            
-
             $manager->flush();
 
-            $this->addFlash('success', 'Section modifiée avec succès');
+            $this->addFlash('warning', 'Section modifiée avec succès.');
 
             return $this->redirectToRoute('section_index');
         }

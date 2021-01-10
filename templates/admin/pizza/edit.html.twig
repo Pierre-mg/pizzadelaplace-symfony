@@ -1,13 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}Edit Pizza{% endblock %}
+{% block title %}Modifier pizza{% endblock %}
 
 {% block body %}
-    <h1>Edit Pizza</h1>
 
-    {{ include('admin/pizza/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="container">
 
-    <a href="{{ path('pizza_index') }}">back to list</a>
+    <h1>Modification</h1>
 
-    {{ include('admin/pizza/_delete_form.html.twig') }}
+    {{ include('admin/pizza/_form.html.twig', {'button_label': 'Modifier', 'button_class': 'btn btn-warning'}) }}
+
+    <a href="{{ path('pizza_index') }}">Retour</a>
+
+</div>
 {% endblock %}

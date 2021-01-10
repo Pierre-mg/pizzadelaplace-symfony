@@ -289,6 +289,10 @@ footer {
     margin: 15px 0 15px 0;
 }
 
+.delete {
+    padding: 3px 7px;
+}
+
 /* Tablettes + desktop : */
 @media (min-width: 700px) {
 

@@ -6,6 +6,7 @@ use App\Entity\Pizza;
 use App\Form\PizzaType;
 use App\Repository\PizzaRepository;
 use App\Repository\SectionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,16 +31,19 @@ class PizzaController extends AbstractController
     /**
      * @Route("/new", name="pizza_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $manager): Response
     {
         $pizza = new Pizza();
         $form = $this->createForm(PizzaType::class, $pizza);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($pizza);
-            $entityManager->flush();
+
+            $manager->persist($pizza);
+            $manager->flush();
+
+            $this->addFlash('success', 'Pizza ajoutée avec succès.');
 
             return $this->redirectToRoute('pizza_index');
         }
@@ -51,20 +55,28 @@ class PizzaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="pizza_edit", methods={"GET","POST"})
+     * @Route("/{id<\d+>}/edit", name="pizza_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Pizza $pizza): Response
+    public function edit(Request $request, Pizza $pizza = null, EntityManagerInterface $manager): Response
     {
+        if(!$pizza) {
+            throw $this->createNotFoundException('Pizza non trouvée.');
+        }
+
         $form = $this->createForm(PizzaType::class, $pizza);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $manager->flush();
+
+            $this->addFlash('warning', 'Pizza modifiée avec succès.');
 
             return $this->redirectToRoute('pizza_index');
         }
 
-        return $this->render('pizza/edit.html.twig', [
+        return $this->render('admin/pizza/edit.html.twig', [
             'pizza' => $pizza,
             'form' => $form->createView(),
         ]);
@@ -73,12 +85,14 @@ class PizzaController extends AbstractController
     /**
      * @Route("/{id}", name="pizza_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Pizza $pizza): Response
+    public function delete(Request $request, Pizza $pizza, EntityManagerInterface $manager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$pizza->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($pizza);
-            $entityManager->flush();
+            
+            $manager->remove($pizza);
+            $manager->flush();
+
+            $this->addFlash('danger', 'Pizza supprimée définitivement.');
         }
 
         return $this->redirectToRoute('pizza_index');

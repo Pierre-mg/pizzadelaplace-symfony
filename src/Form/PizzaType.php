@@ -18,13 +18,16 @@ class PizzaType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'empty_data' => ''
             ])
             ->add('content', TextType::class, [
-                'label' => 'Contenu'
+                'label' => 'Contenu',
+                'empty_data' => ''
             ])
             ->add('price', NumberType::class, [
-                'label' => 'Prix'
+                'label' => 'Prix',
+                'empty_data' => 0
             ])
             ->add('section', EntityType::class, [
                 'class' => Section::class,
@@ -40,6 +43,9 @@ class PizzaType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Pizza::class,
+            'attr' => [
+                    'novalidate' => 'novalidate'
+            ]
         ]);
     }
 }

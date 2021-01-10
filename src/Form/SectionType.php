@@ -26,6 +26,9 @@ class SectionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Section::class,
+            'attr' => [
+                'novalidate' => 'novalidate'
+            ]
         ]);
     }
 }
