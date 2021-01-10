@@ -1,9 +1,23 @@
 {% extends 'base_admin.html.twig' %}
 
-
+{% block title %}Tableau de bord{% endblock %}
 
 {% block body %}
 
+<div class="container">
 
+    <h1>Tableau de bord</h1>
+
+    <div class="list-group">
+    <a href="{{ path('section_index') }}" class="list-group-item list-group-item-action">Section du menu</a>
+    <a href="{{ path('pizza_index') }}" class="list-group-item list-group-item-action">Les pizzas</a>
+    <a href="#" class="list-group-item list-group-item-action">Les pizzas dessert</a>
+    <a href="#" class="list-group-item list-group-item-action">Les boisson</a>
+    <a href="#" class="list-group-item list-group-item-action">Les vins</a>
+    <a href="#" class="list-group-item list-group-item-action">Les produits allergènes</a>
+    <a href="#" class="list-group-item list-group-item-action">Section "informations"</a>
+    </div>
+
+</div>
 
 {% endblock %}

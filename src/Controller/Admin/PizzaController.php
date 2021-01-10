@@ -83,10 +83,13 @@ class PizzaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="pizza_delete", methods={"DELETE"})
+     * @Route("/{id<\d+>}", name="pizza_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Pizza $pizza, EntityManagerInterface $manager): Response
+    public function delete(Request $request, Pizza $pizza = null, EntityManagerInterface $manager): Response
     {
+        if (!$pizza) {
+            throw $this->createNotFoundException('Pizza non trouvée.');
+        }
         if ($this->isCsrfTokenValid('delete'.$pizza->getId(), $request->request->get('_token'))) {
             
             $manager->remove($pizza);
