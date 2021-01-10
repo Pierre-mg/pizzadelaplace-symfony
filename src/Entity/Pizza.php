@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SpecialRedRepository;
+use App\Repository\PizzaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SpecialRedRepository::class)
+ * @ORM\Entity(repositoryClass=PizzaRepository::class)
  */
-class SpecialRed
+class Pizza
 {
     /**
      * @ORM\Id
@@ -31,6 +31,12 @@ class SpecialRed
      * @ORM\Column(type="float")
      */
     private $price;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="pizzas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $section;
 
     public function getId(): ?int
     {
@@ -69,6 +75,18 @@ class SpecialRed
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getSection(): ?Section
+    {
+        return $this->section;
+    }
+
+    public function setSection(?Section $section): self
+    {
+        $this->section = $section;
 
         return $this;
     }
