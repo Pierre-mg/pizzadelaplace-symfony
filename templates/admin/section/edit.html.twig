@@ -8,10 +8,7 @@
 
     <h1>Modification</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn btn-warning">Modifier</button>
-    {{ form_end(form) }}
+    {{ include('admin/_form.html.twig', {'button_label': 'Modifier', 'button_class': 'btn btn-warning'}) }}
 
     <a href="{{ path('section_index') }}">Retour</a>
 
