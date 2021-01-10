@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PizzaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PizzaRepository::class)
@@ -19,22 +20,30 @@ class Pizza
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @Assert\NotBlank
      */
     private $content;
 
     /**
      * @ORM\Column(type="float")
+     * 
+     * @Assert\NotBlank
      */
     private $price;
 
     /**
      * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="pizzas")
      * @ORM\JoinColumn(nullable=false)
+     * 
+     * @Assert\NotBlank
      */
     private $section;
 
