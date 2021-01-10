@@ -43,8 +43,10 @@ class SectionController extends AbstractController
 
         $form->handleRequest($request);
 
+        
         if ($form->isSubmitted() && $form->isValid()) {
 
+            
 
             $manager->flush();
 

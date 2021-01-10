@@ -16,6 +16,7 @@ class SectionType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
+                'empty_data' => '',
                 'label' => 'Titre',
             ])
         ;
