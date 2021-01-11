@@ -90,7 +90,7 @@ class PizzaController extends AbstractController
         if (!$pizza) {
             throw $this->createNotFoundException('Pizza non trouvée.');
         }
-        
+
         if ($this->isCsrfTokenValid('delete'.$pizza->getId(), $request->request->get('_token'))) {
             
             $manager->remove($pizza);
