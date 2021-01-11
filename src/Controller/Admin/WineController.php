@@ -43,7 +43,7 @@ class WineController extends AbstractController
             $manager->persist($wine);
             $manager->flush();
 
-            $this->addFlash('success', 'Vin ajoutée avec succès.');
+            $this->addFlash('success', 'Vin ajouté avec succès.');
 
             return $this->redirectToRoute('wine_index');
         }

@@ -1,0 +1,16 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Modifier produit allergène{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1>Modification</h1>
+
+    {{ include('admin/_form.html.twig', {'button_label': 'Modifier', 'button_class': 'btn btn-warning'}) }}
+
+    <a href="{{ path('allergen_product_index') }}">Retour</a>
+
+</div>
+{% endblock %}
