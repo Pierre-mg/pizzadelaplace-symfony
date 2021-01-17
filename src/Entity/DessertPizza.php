@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=DessertPizzaRepository::class)
+ * 
+ * @ORM\HasLifecycleCallbacks()
  */
 class DessertPizza
 {
@@ -31,6 +33,32 @@ class DessertPizza
      * @Assert\NotBlank
      */
     private $price;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $Updated_at;
+
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAtVAlue()
+    {
+        $this->created_at = new \DateTime();
+    }
+
+    /**
+    * @ORM\PreUpdate
+    */
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -57,6 +85,30 @@ class DessertPizza
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->Updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $Updated_at): self
+    {
+        $this->Updated_at = $Updated_at;
 
         return $this;
     }

@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PizzaRepository::class)
+ * 
+ * @ORM\HasLifecycleCallbacks()
  */
 class Pizza
 {
@@ -46,6 +48,32 @@ class Pizza
      * @Assert\NotBlank
      */
     private $section;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updated_at;
+
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAtVAlue()
+    {
+        $this->created_at = new \DateTime();
+    }
+
+    /**
+    * @ORM\PreUpdate
+    */
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -96,6 +124,30 @@ class Pizza
     public function setSection(?Section $section): self
     {
         $this->section = $section;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }
